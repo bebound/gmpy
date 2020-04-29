@@ -74,11 +74,13 @@ install:
       python setup.py sdist
       pip install dist/gmpy2-*.tar.gz
     fi
+    pip install cibuildwheel==1.3.0
     pip install sphinx
 
 script:
   - python test/runtests.py
   - python test_cython/runtests.py
+  - python -m cibuildwheel --output-dir wheelhouse
   - cd docs/
   - make html
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
@@ -88,4 +90,4 @@ script:
 notifications:
   slack:
     on_success: never
-    on_failure : never
+    on_failure: never
