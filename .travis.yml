@@ -47,7 +47,7 @@ jobs:
       language: shell
 env:
   global:
-    - CIBW_BEFORE_BUILD=bash before_ci_build.sh
+    - CIBW_BEFORE_BUILD="bash before_ci_build.sh"
 
 
 install:
