@@ -32,6 +32,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BEFORE_BUILD: bash scripts/before_ci_build.sh
+          CIBW_SKIP: pp*
 
       - uses: actions/upload-artifact@v1
         with:

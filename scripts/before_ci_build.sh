@@ -1,9 +1,6 @@
 if [ ! -f finish_before_ci_build ]; then
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
     yum install -y wget lzip
-    yum install centos-release-scl
-    yum install devtoolset-3-toolchain
-    scl enable devtoolset-3 bash
     wget https://gmplib.org/download/gmp/gmp-6.2.0.tar.lz
     tar -xvf gmp-6.2.0.tar.lz
     cd gmp-6.2.0 && ./configure && make -j4 && make install && cd ../
