@@ -1,4 +1,4 @@
-name: Build
+name: Build Wheel
 
 on: [push, pull_request]
 
@@ -27,13 +27,11 @@ jobs:
         run: |
           choco install vcpython27 -f -y
 
-      - name: Install libaraies
-        run: |
-          bash scripts/before_ci_build.sh
-
       - name: Build wheel
         run: |
           python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_BEFORE_BUILD: bash scripts/before_ci_build.sh
 
       - uses: actions/upload-artifact@v1
         with:
