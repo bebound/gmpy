@@ -15,4 +15,6 @@ if [ ! -f finish_before_ci_build ]; then
     brew install gmp mpfr libmpc
   fi
   touch finish_before_ci_build
+else
+  echo "has finished before ci build"
 fi
